@@ -1,12 +1,17 @@
-## parseUrl v0.0.1-alpha
+## parseUrl v0.0.2-alpha
 *Written by [Talon Poole](http://theghostin.me) and released under the MIT license*
 
-This simple function uses Regex to deconstruct and extract all
-the good stuff out of a URL. It's currently:
-
-### *Under Development*
+Get the most out of your URLs.
 
 ## How to Use
+first thing is first
+
+    npm install parse-url
+
+then
+
+    var parseUrl = require("parseUrl");
+
 Simply call `parseUrl()` and pass in the url as a string.
 
 	var urlStuff = parseUrl("https://github.com/LegitTalon/parseUrl");
@@ -18,7 +23,7 @@ It will return an object. Here's what the URL above would return:
     , dirs: ["/LegitTalon", "/parseUrl"]
     , filePath: "/LegitTalon/parseUrl"
     , file: "index.html"
-    , fileType: "html"
+    , fileType: ".html"
     , fileName: "index"
     };
 

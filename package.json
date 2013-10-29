@@ -1,13 +1,11 @@
 {
   "name": "parse-url",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Parse a URL.",
   "author": "Talon Poole",
   "license": "MIT",
   "preferGlobal": false,
-  "bin": {
-    "parse-url": "./bin/index.js"
-    },
+  "bin": {},
   "dependencies": {},
   "devDependencies": {
     "chai": "1.8.1",
