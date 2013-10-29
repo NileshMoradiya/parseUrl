@@ -1,0 +1,16 @@
+{
+  "name": "parse-url",
+  "version": "0.0.1",
+  "description": "Parse a URL.",
+  "author": "Talon Poole",
+  "license": "MIT",
+  "preferGlobal": false,
+  "bin": {
+    "retrieve": "./bin/parseUrl.js"
+    },
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "1.8.1",
+    "mocha": "1.13.0"
+  }
+}
