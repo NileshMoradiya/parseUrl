@@ -6,7 +6,7 @@
   "license": "MIT",
   "preferGlobal": false,
   "bin": {
-    "retrieve": "./bin/parseUrl.js"
+    "parse-url": "./bin/index.js"
     },
   "dependencies": {},
   "devDependencies": {

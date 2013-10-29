@@ -16,7 +16,7 @@ module.exports = function (url) {
  */
   var validUrlRegex = /^http[s]?:\/\/.+\.[\w]{2,4}\/?.*$/;
   if (!validUrlRegex.test(url)) {
-    throw new Error("parseUrl only works with valid URL formats. Ex. http://hello.com")
+    throw new Error("parseUrl only works with valid URL formats. Ex. http://hello.com");
   };
 
 /*
@@ -25,8 +25,7 @@ module.exports = function (url) {
   var parsings =
     { protocol: null
     , baseUrl: null
-    , dirs: null
-    , filePath: null
+    , dirs: []
     , file: null
     , fileType: null
     , fileName: null
@@ -41,7 +40,7 @@ module.exports = function (url) {
  * So we use .match with the url and Regex
  * and take the first index.
  */
-  var protocolRegex = /^http[s]?/
+  var protocolRegex = /^http[s]?/;
   parsings.protocol = url.match(protocolRegex)[0];
 
 /*
@@ -58,18 +57,48 @@ module.exports = function (url) {
  * or the end of the string
  *
  */
-  var baseUrlRegex = /^[A-Za-z0-9_.-]\.[\w]{2,4}/
+  var baseUrlRegex = /^[A-Za-z0-9_\.-]+\.[\w]{2,4}/;
   parsings.baseUrl = url.match(baseUrlRegex)[0];
 
 /*
- * ## filePath
+ * ## file
  *
- * Everything that is leftover is the filePath.
+ * check the end of the string for an extension. If none then default to
+ * fileName "index" fileType ".html"
  */
   url = url.replace(baseUrlRegex, "");
 
-  var dirsRegex = /^\//g
+  var fileRegex = /[^\/]+\.\w{1,5}$/;
+  if (url.match(fileRegex)) {
+    parsings.file = url.match(fileRegex)[0];
+  } else {
+    parsings.file = "index.html";
+    parsings.fileName = "index";
+    parsings.fileType = ".html";
+  }
 
+/*
+ * ## fileName & fileType
+ *
+ * if they're null then fill it in.
+ * if not then they've been set above.
+ */
+  var fileTypeRegex = /\.\w{1,5}$/;
+  if (!parsings.fileName && !parsings.fileType) {
+    parsings.fileType = parsings.file.match(fileTypeRegex)[0];
+    parsings.fileName = parsings.file.replace(fileTypeRegex, "");
+  }
+
+/*
+ * ## dirs
+ *
+ * It's whatever is leftover when you remove the file.
+ */
+  if (!url.replace(fileRegex, "").match(/\/[^\/]*/)) {
+    parsings.dirs = ["/"];
+  } else {
+    parsings.dirs = url.replace(fileRegex, "").match(/\/[^\/]*/);
+  }
 
   return parsings
 };

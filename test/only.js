@@ -10,7 +10,6 @@ describe("parseUrl.js", function() {
           { protocol: "http"
           , baseUrl: "theghostin.me"
           , dirs: ["/"]
-          , filePath: "index.html"
           , file: "index.html"
           , fileType: ".html"
           , fileName: "index"
@@ -27,7 +26,6 @@ describe("parseUrl.js", function() {
           { protocol: "https"
           , baseUrl: "theghostin.me"
           , dirs: ["/"]
-          , filePath: "audio.mp3"
           , file: "audio.mp3"
           , fileType: ".mp3"
           , fileName: "audio"
@@ -44,7 +42,6 @@ describe("parseUrl.js", function() {
           { protocol: "http"
           , baseUrl: "theghostin.me"
           , dirs: ["/deep", "/deeper", "/deepest"]
-          , filePath: "/deep/deeper/deepest/audio.mp3"
           , file: "audio.mp3"
           , fileType: ".mp3"
           , fileName: "audio"
